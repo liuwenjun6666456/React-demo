@@ -4,9 +4,18 @@
  */
 const express=require('express');
 const app=express();
+
 app.get('/',function (req,res) {
     res.send('hello world');
 });
+
+app.get('/data',function (req,res) {
+    res.json({
+        name:'lwj',
+        age:'29'
+    })
+});
+
 app.listen(8888,function () {
     console.log("node start at port 8888");
 })
