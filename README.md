@@ -1,7 +1,12 @@
 # React-demo
-这是一个react-demo，很久没玩react，很多东西记不住，那就搞个demo玩玩吧，各位见笑
-##脚手架
-create-react-app <br/>
+这是一个react-demo，很久没玩react，很多东西记不住，那就搞个demo玩玩吧，各位见笑<br/>
+##用了哪些技术
+
+* create-react-app
+* react+redux
+* ant.mobile
+* express
+* nodemon
 
 官方提供的脚手架,既然玩耍，那就好好玩耍吧。
 
@@ -13,6 +18,9 @@ create-react-app <br/>
        
 ##nodemon
 ``这玩意不用总启动服务器，不然node server 重启挺恶心的``
+
+##ant.mobile
+``ant全家桶一起来玩吧``
 
 ##安装
 cnpm install
