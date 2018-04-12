@@ -1,3 +1,10 @@
-/**
- * Created by liuwenjun on 2018/4/11.
- */
+import {combineReducers} from 'redux';
+import {user} from './user.redux';
+
+const Reducers=combineReducers({
+    user
+})
+
+export {
+    Reducers
+}

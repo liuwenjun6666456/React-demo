@@ -15,6 +15,6 @@ axios.interceptors.response.use(function (config) {
     //Toast.loading('加载中',0);
     setTimeout(() => {
         Toast.hide();
-    }, 2000);
+    }, 200);
     return config;
 });

@@ -8,18 +8,26 @@ import registerServiceWorker from './registerServiceWorker';
 import './config/axios-interceptors';
 import Login from './page/login/login';
 import Register from './page/register/register';
+import AuthRoute from './component/auth-route/auth-route';
+import {Reducers} from './redux'
 const store = createStore(
+    Reducers,
     compose(
         applyMiddleware(thunk),//处理异步
-        window.devToolsExtension ? window.devToolsExtension() : {}//使用调试工具
+        window.devToolsExtension ? window.devToolsExtension() : f=>f//使用调试工具
     )
 )
+
+function Boss(){
+    return <h2>11111</h2>
+}
 
 ReactDOM.render(
     (<Provider store={store}>
         <BrowserRouter>
             <div>
                 <AuthRoute></AuthRoute>
+                <Route path="/boss" component={Boss}></Route>
                 <Route path="/login" component={Login}></Route>
                 <Route path="/register" component={Register}></Route>
             </div>
