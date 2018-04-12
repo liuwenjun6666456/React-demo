@@ -3,12 +3,11 @@ import axios from 'axios';
 const REGISTER_SUCCESS = 'REGISTER_SUCESS';
 const ERROR_MSG = 'ERROR_MSG';
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-
+const LOAD_DATA = 'LOAD_DATA';
 const initState = {
     isAuth: '',
     msg: '',
     username: '',
-    pwd: '',
     type: ''
 }
 
@@ -20,15 +19,21 @@ export function user(state = initState, action) {
                 msg: '',
                 isAuth: true,
                 ...action.payload,
-                redirectTo:getRedirectPath(action.payload),
+                redirectTo: getRedirectPath(action.payload),
             }
         case LOGIN_SUCCESS:
             return {
-                 ...state,
+                ...state,
                 msg: '',
                 isAuth: true,
                 ...action.payload,
                 redirectTo: getRedirectPath(action.payload),
+            }
+        case LOAD_DATA:
+            return {
+                ...state,
+                isAuth: true,
+                ...action.payload
             }
         case ERROR_MSG:
             return {
@@ -45,21 +50,24 @@ export function user(state = initState, action) {
 
 export function getRedirectPath({type}) {
     //根据用户信息，跳转地址 boss列表或者牛人列表
-    let url=(type==='boss')?'/boss':'/genius';
+    let url = (type === 'boss') ? '/boss' : '/genius';
     return url;
 }
-function loginSuccess(data){
+
+function loginSuccess(data) {
     return {type: LOGIN_SUCCESS, payload: data};
 }
-function registerSuccess(data){
+
+function registerSuccess(data) {
     return {type: REGISTER_SUCCESS, payload: data};
 }
 
 function errorMsg(msg) {
     return {msg, type: ERROR_MSG}
 }
+
 export function login({username, pwd}) {
-    if (!username || !pwd ) {
+    if (!username || !pwd) {
         return errorMsg('用户名密码不能为空');
     }
     return dispatch => {
@@ -96,3 +104,6 @@ export function register({username, pwd, repeatPwd, type}) {
 
 }
 
+export function loadData(userInfo) {
+    return {type: LOAD_DATA, payload: userInfo};
+}

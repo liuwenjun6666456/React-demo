@@ -64,8 +64,6 @@ class Register extends React.Component {
                         </RadioItem>
                     </List>
                     <WhiteSpace></WhiteSpace>
-                    <Button type="primary">登录</Button>
-                    <WhiteSpace></WhiteSpace>
                     <Button onClick={this.handleRegister} type="primary">注册</Button>
                 </WingBlank>
             </div>
