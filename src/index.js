@@ -6,9 +6,11 @@ import thunk from 'redux-thunk';
 import {BrowserRouter, Route, Link, Redirect, Switch} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import './config/axios-interceptors';
+import AuthRoute from './component/auth-route/auth-route';
 import Login from './page/login/login';
 import Register from './page/register/register';
-import AuthRoute from './component/auth-route/auth-route';
+import BossInfo from './page/bossInfo/bossInfo';
+import GeniusInfo from './page/geniusInfo/geniusInfo';
 import {Reducers} from './redux'
 const store = createStore(
     Reducers,
@@ -18,18 +20,17 @@ const store = createStore(
     )
 )
 
-function Boss(){
-    return <h2>11111</h2>
-}
-
 ReactDOM.render(
     (<Provider store={store}>
         <BrowserRouter>
             <div>
                 <AuthRoute></AuthRoute>
-                <Route path="/boss" component={Boss}></Route>
-                <Route path="/login" component={Login}></Route>
-                <Route path="/register" component={Register}></Route>
+                <Switch>
+                    <Route path="/bossinfo" component={BossInfo}></Route>
+                    <Route path="/geniusinfo" component={GeniusInfo}></Route>
+                    <Route path="/login" component={Login}></Route>
+                    <Route path="/register" component={Register}></Route>
+                </Switch>
             </div>
         </BrowserRouter>
     </Provider>),

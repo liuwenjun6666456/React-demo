@@ -58,6 +58,24 @@ Router.get('/info', function (req, res) {
 
 });
 
+Router.post('/update', function (req, res) {
+    const {userid} = req.cookies;
+    if (!userid) {
+        return res.json({code: 1});
+    }
+    const body=req.body;
+    User.findByIdAndUpdate(userid,body,function (err, doc) {
+        if(err){
+            return res.json({code:1, msg: '后端出错了'});
+        }
+        const data=Object.assign({},{
+            username:doc.username,
+            type:doc.type
+        },body);
+        return res.json({code:0,data});
+    });
+});
+
 function md5Pwd(pwd) {
     const salt = 'dsd@dSdsdasdsfa6478%^%^&$^$%$';//复杂一点
     return utils.md5(utils.md5(salt + pwd));
